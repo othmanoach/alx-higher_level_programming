@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import sys
-"""test"""
+"""queens problem solved"""
 
 
 def is_safe(board, row, col, n):
