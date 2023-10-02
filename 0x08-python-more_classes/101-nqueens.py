@@ -1,7 +1,10 @@
 #!/usr/bin/python3
 import sys
 """test"""
+
 def is_safe(board, row, col, n):
+"""safe"""
+
     for i in range(row):
         if board[i][col] == 1:
             return False
@@ -14,6 +17,8 @@ def is_safe(board, row, col, n):
     return True
 
 def solve_nqueens(board, row, n, solutions):
+"""solve_nqueens"""
+
     if row == n:
         solutions.append(board_to_result(board, n))
         return
@@ -24,6 +29,8 @@ def solve_nqueens(board, row, n, solutions):
             board[row][col] = 0
 
 def board_to_result(board, n):
+"""board_to_result""" 
+
     result = []
     for i in range(n):
         for j in range(n):
@@ -33,6 +40,8 @@ def board_to_result(board, n):
     return result
 
 if __name__ == "__main__":
+"""main to name"""
+
     if len(sys.argv) != 2:
         print("Usage: nqueens N")
         sys.exit(1)
