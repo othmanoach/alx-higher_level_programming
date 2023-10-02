@@ -1,57 +1,35 @@
 #!/usr/bin/python3
-"""
-nqueens backtracking program to print the coordinates of n queens
-on an nxn grid such that they are all in non-attacking positions
-"""
-from sys import argv
-if __name__ == "__main__":
-    a = []
-    if len(argv) != 2:
-        print("Usage: nqueens N")
-        exit(1)
-    if argv[1].isdigit() is False:
-        print("N must be a number")
-        exit(1)
-    n = int(argv[1])
-    if n < 4:
-        print("N must be at least 4")
-        exit(1)
-    # initialize the answer list
-    for i in range(n):
-        a.append([i, None])
+import sys
 
-    def already_exists(y):
-        """check that a queen does not already exist in that y value"""
-        for x in range(n):
-            if y == a[x][1]:
-                return True
-        return False
-
-    def reject(x, y):
-        """determines whether or not to reject the solution"""
-        if (already_exists(y)):
+def is_safe(queen, queens):
+    for (row, col) in queens:
+        if row == queen[0] or col == queen[1]:  # Check rows and columns
             return False
-        i = 0
-        while(i < x):
-            if abs(a[i][1] - y) == abs(i - x):
-                return False
-            i += 1
-        return True
+        if (queen[0] - row) == (queen[1] - col) or (queen[0] - row) == (col - queen[1]):  # Check diagonals
+            return False
+    return True
 
-    def clear_a(x):
-        """clears the answers from the point of failure on"""
-        for i in range(x, n):
-            a[i][1] = None
+def n_queens(n, row=0, queens=[]):
+    if row == n:
+        print(queens)
+        return
+    for col in range(n):
+        queen = [row, col]
+        if is_safe(queen, queens):
+            queens.append(queen)
+            n_queens(n, row + 1, queens)
+            queens.pop()
 
-    def nqueens(x):
-        """recursive backtracking function to find the solution"""
-        for y in range(n):
-            clear_a(x)
-            if reject(x, y):
-                a[x][1] = y
-                if (x == n - 1):  # accepts the solution
-                    print(a)
-                else:
-                    nqueens(x + 1)  # moves on to next x value to continue
-    # start the recursive process at x = 0
-    nqueens(0)
+if name == "main":
+    if len(sys.argv) != 2:
+        print("Usage: nqueens N")
+        sys.exit(1)
+    try:
+        N = int(sys.argv[1])
+    except ValueError:
+        print("N must be a number")
+        sys.exit(1)
+    if N < 4:
+        print("N must be at least 4")
+        sys.exit(1)
+    n_queens(N)
