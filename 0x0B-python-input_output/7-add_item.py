@@ -15,7 +15,7 @@ my_file = 'add_item.json'
 
 my_list = []
 
-if os.path.exists(my_file) and os.path.getsize(my_file) > 0:
+if os.path.exists(my_file):
     my_list = load_from_json_file(my_file)
 
 my_list.extend(sys.argv[1:])
