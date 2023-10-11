@@ -6,6 +6,7 @@ and then save them to a file
 
 import sys
 import json
+import os
 
 from 5-save_to_json_file import save_to_json_file
 from 6-load_from_json_file import load_from_json_file
@@ -14,9 +15,9 @@ my_file = 'add_item.json'
 
 my_list = []
 
-if load_from_json_file(my_file):
+if os.path.exists(my_file) and os.path.getsize(my_file) > 0:
     my_list = load_from_json_file(my_file)
-
+    
 for elem in sys.argv[1:]:
     my_list.append(elem)
 
