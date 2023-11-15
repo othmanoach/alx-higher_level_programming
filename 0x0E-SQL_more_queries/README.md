@@ -1,4 +1,5 @@
 #0x0E-SQL more queries
+------------------------------
 ## Basic
 ###0-privileges.sql
 ###1-create_user.sql
@@ -17,6 +18,7 @@
 ###14-my_genres.sql
 ###15-comedy_only.sql
 ###16-shows_by_genre.sql
+----------------------------
 ##advanced
 ###100-not_my_genres.sql
 ###101-not_a_comedy.sql
