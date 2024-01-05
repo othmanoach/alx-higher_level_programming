@@ -1,3 +1,3 @@
 #!/bin/bash
-# Script that shows the Content-Length from a HTTP request
-curl -sI "$1" | grep "Content-Length:" | cut -d " " -f 2
+# Get the comtent-lenght of a giving ip address
+curl -sI "$1" | awk '/Content-Length/{print $2}'
